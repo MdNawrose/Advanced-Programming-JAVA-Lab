@@ -1,0 +1,56 @@
+class DeptThread implements Runnable {
+@Override
+public void run() {
+try {
+for (int i = 1; i <= 10; i++) {
+System.out.print("CSE ");
+Thread.sleep(2000);
+if(i%10==0){
+System.out.println("");
+}}
+} catch (InterruptedException e) {
+System.err.println("DeptThread interrupted: " + e.getMessage());
+}
+}
+}
+class NameThread implements Runnable {
+@Override
+public void run() {
+for (int i = 1; i <= 20; i++) {
+System.out.print("Saurav ");
+if(i%10==0){
+System.out.println("");
+}
+}
+}
+}
+class IDThread implements Runnable {
+private Thread dependencyThread;
+public IDThread(Thread dependencyThread) {
+this.dependencyThread = dependencyThread;
+}
+@Override
+public void run() {
+try {
+dependencyThread.join();
+for (int i = 1; i <= 30; i++) {
+System.out.print("147 ");
+if(i%10==0){
+System.out.println("");
+}}
+} catch (InterruptedException e) {
+System.err.println("IDThread interrupted: " + e.getMessage());
+}
+}
+}
+public class Question {
+public static void main(String[] args) {
+Thread deptThread = new Thread(new DeptThread());
+Thread nameThread = new Thread(new NameThread());
+Thread idThread = new Thread(new IDThread(nameThread));
+nameThread.setPriority(Thread.MAX_PRIORITY);
+deptThread.start();
+nameThread.start();
+idThread.start();
+}
+}
