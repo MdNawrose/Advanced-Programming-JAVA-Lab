@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Question_01 {
 public static void main(String[] args) {
 String fileName = "C:\\data.txt";
-try {
+try {               
 File file = new File(fileName);
 Scanner scanner = new Scanner(file);
 while (scanner.hasNextLine()) {
