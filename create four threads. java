@@ -3,7 +3,7 @@ class DeptThread implements Runnable {
 public void run() {
 try {
 for (int i = 1; i <= 10; i++) {
-System.out.print("CSE ");
+System.out.print("CSE ");              
 Thread.sleep(2000);
 if(i%10==0){
 System.out.println("");
