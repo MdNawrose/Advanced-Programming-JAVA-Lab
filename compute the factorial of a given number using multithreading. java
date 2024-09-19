@@ -1,0 +1,41 @@
+import java.math.BigInteger;
+import java.util.Scanner;
+class FactorialThread implements Runnable {
+private int start;
+private int step;
+private int n;
+private BigInteger result = BigInteger.ONE;
+public FactorialThread(int start, int step, int n) {
+this.start = start;
+this.step = step;
+this.n = n;
+}
+public BigInteger getResult() {
+return result;
+}
+public void run() {
+for (int i = start; i <= n; i += step) {
+result = result.multiply(BigInteger.valueOf(i));
+}
+}
+}
+public class Question{
+public static void main(String[] args) {
+Scanner scanner = new Scanner(System.in);
+System.out.print("Enter a number to compute factorial: ");
+int n = scanner.nextInt();
+scanner.close();
+FactorialThread evenTask = new FactorialThread(2, 2, n);
+FactorialThread oddTask = new FactorialThread(1, 2, n);
+Thread evenThread = new Thread(evenTask);
+Thread oddThread = new Thread(oddTask);
+evenThread.start();
+oddThread.start();
+try {
+evenThread.join();
+oddThread.join();
+} catch (InterruptedException e) {
+System.err.println("Thread interrupted: " + e.getMessage());
+}
+BigInteger totalFactorial =evenTask.getResult().multiply(oddTask.getResult());
+System.out.println("Factorial of " + n + " is: " + totalFactorial);}
