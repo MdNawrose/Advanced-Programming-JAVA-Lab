@@ -2,7 +2,7 @@ class Question {
 public static void main(String[] args) {
 int[][] matrixA = {
 {18, 16, 14},
-{12, 10, 8},
+{12, 10, 8}, 
 {6, 4, 2}
 };
 int[][] matrixB = {
