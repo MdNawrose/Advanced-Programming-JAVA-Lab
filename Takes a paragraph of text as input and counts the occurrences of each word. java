@@ -1,0 +1,38 @@
+import java.util.*;
+import java.util.stream.Collectors;
+public class WordFrequency {
+public static void main(String[] args) {
+Scanner scanner = new Scanner(System.in);
+System.out.println("Enter a paragraph of text:");
+String paragraph = scanner.nextLine();
+Map<String, Integer> wordCounts = countWords(paragraph); 
+List<Map.Entry<String, Integer>> mostCommon = getMostCommonWords(wordCounts, 5);
+displayResults(wordCounts, mostCommon);
+}
+private static Map<String, Integer> countWords(String
+paragraph) {
+String[] words = paragraph.toLowerCase().replaceAll("[^a-zA-Z\\s]", "").split("\\s+");
+Map<String, Integer> wordCounts = new HashMap<>();
+for (String word : words) {
+if (!word.isEmpty()) {
+wordCounts.put(word, wordCounts.getOrDefault(word, 0) + 1);
+}
+}
+return wordCounts;
+}
+private static List<Map.Entry<String, Integer>>getMostCommonWords(Map<String, Integer> wordCounts, int n) {
+return wordCounts.entrySet().stream().sorted((e1, e2) ->
+e2.getValue().compareTo(e1.getValue())) .limit(n).collect(Collectors.toList());
+}
+private static void displayResults(Map<String, Integer>
+wordCounts, List<Map.Entry<String, Integer>> mostCommon) {
+System.out.println("Word frequencies:");
+for (Map.Entry<String, Integer> entry : wordCounts.entrySet()) {
+System.out.println(entry.getKey() + ": " + entry.getValue());
+}
+System.out.println("\nFive most common words:");
+for (Map.Entry<String, Integer> entry : mostCommon) {
+System.out.println(entry.getKey() + ": " +entry.getValue());
+}
+}
+}
