@@ -1,7 +1,7 @@
 import java.util.concurrent.*;
 public class Question {
 public static void main(String[] args) {
-int n = 100;
+int n = 100; 
 int numThreads = 4;
 ExecutorService executor = Executors.newFixedThreadPool(numThreads);
 CompletionService<Long> completionService = new ExecutorCompletionService<>(executor);
