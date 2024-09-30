@@ -1,7 +1,7 @@
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
-public class TicketBookingSystem {
+public class TicketBookingSystem { 
     private Queue<String> ticketRequests;
 public TicketBookingSystem() {
         ticketRequests = new LinkedList<>();
