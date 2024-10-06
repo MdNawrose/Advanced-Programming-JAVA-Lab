@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.Scanner; 
 import java.util.Stack;
 class Student {
     private String name;
