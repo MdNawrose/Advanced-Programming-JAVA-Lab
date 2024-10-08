@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class StringManipulation {
+public class StringManipulation { 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
        System.out.print("Enter string A: ");
