@@ -1,8 +1,3 @@
-Write a Java program to remove duplicates from a list of strings. 
-Implement a method remove duplicates that takes a List of strings as input and removes any duplicate elements, 
-keeping only the first occurrence of each element.
-
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
